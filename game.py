@@ -1,22 +1,25 @@
 import tkinter as tk
 import random
 from tile import Tile
+from PIL import Image, ImageTk
+
 
 class Make10Game:
     def __init__(self):
         self.window = tk.Tk()
-        self.window.title("Make10 Game")
-        self.window.geometry("400x500")
-        self.window.configure(bg="#FFF8DC")
+        self.window.title("Make 10 Game")
+        self.window.geometry("600x600")  # Match the image size
 
-        self.tiles = []
-        self.selected_tiles = []
-        self.score = 0
+        # Background setup
+        bg_image = Image.open("background orange.jpg")
+        bg_photo = ImageTk.PhotoImage(bg_image)
+        self.bg_label = tk.Label(self.window, image=bg_photo)
+        self.bg_label.image = bg_photo
+        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        self.intro_frame = tk.Frame(self.window, bg="#FFF8DC")
-        self.game_frame = tk.Frame(self.window)
-
-        self.show_intro()
+        # Then your labels and game widgets follow
+        self.score_label = tk.Label(self.window, text="Score: 0", font=("MV Boli", 16, "bold"), bg="#ffffff")
+        self.score_label.pack()
 
     def show_intro(self):
         self.intro_frame.pack(fill="both", expand=True)
