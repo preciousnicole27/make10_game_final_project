@@ -29,8 +29,8 @@ class Make10Game:
         self.animate_title("Make10")
 
         instructions = (
-            "🎯 Click two numbers\n"
-            "�� If they add up to 10, you score!\n"
+            "☆☆ Click two numbers\n"
+            "🔟 If they add up to 10, you score!\n"
             "🟠 Tap again to deselect.\n"
             "\n💡 Try to reach the highest score!"
         )
