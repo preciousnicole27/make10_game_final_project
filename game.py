@@ -5,21 +5,33 @@ from PIL import Image, ImageTk
 
 
 class Make10Game:
+    from PIL import Image, ImageTk
+
+class Make10Game:
     def __init__(self):
         self.window = tk.Tk()
         self.window.title("Make 10 Game")
-        self.window.geometry("600x600")  # Match the image size
+        self.window.geometry("600x600")
 
-        # Background setup
+        # 1. Load image
         bg_image = Image.open("background orange.jpg")
         bg_photo = ImageTk.PhotoImage(bg_image)
-        self.bg_label = tk.Label(self.window, image=bg_photo)
-        self.bg_label.image = bg_photo
-        self.bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-        # Then your labels and game widgets follow
-        self.score_label = tk.Label(self.window, text="Score: 0", font=("MV Boli", 16, "bold"), bg="#ffffff")
-        self.score_label.pack()
+        self.canvas = tk.Canvas(self.window, width=600, height=600)
+        self.canvas.pack(fill="both", expand=True)
+        self.canvas.create_image(0, 0, image=bg_photo, anchor="nw")
+        self.canvas.bg_image = bg_photo
+        self.score_label = tk.Label(self.canvas, text="Score: 0", font=("MV Boli", 16, "bold"), bg="white")
+        self.score_label_window = self.canvas.create_window(300, 30, window=self.score_label)
+        self.frame = tk.Frame(self.canvas, bg="", highlightthickness=0)
+        self.frame_window = self.canvas.create_window(300, 300, window=self.frame)
+        self.tiles = []
+        self.selected_tiles = []
+        self.score = 0
+        self.generate_board()
+        self.tiles = []
+        self.selected_tiles = []
+        self.score = 0
+        self.generate_board()
 
     def show_intro(self):
         self.intro_frame.pack(fill="both", expand=True)
