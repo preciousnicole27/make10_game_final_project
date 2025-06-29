@@ -105,7 +105,7 @@ class Make10Game:
 
         rest = []
         while len(rest) < 7:
-            r = random.randint(1, 9)
+            random_number = random.randint(1, 9)
             rest.append(r)
 
         numbers = valid_pair + rest
